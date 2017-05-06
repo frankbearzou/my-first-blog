@@ -1,0 +1,13 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <h1>New post</h1>
+    <form method="post" class="post-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-primary">Save</button>
+        {% if go_detail %}
+            <a href="{% url 'post_detail' pk=go_detail %}">Go back</a>
+        {% endif %}
+    </form>
+{% endblock %}

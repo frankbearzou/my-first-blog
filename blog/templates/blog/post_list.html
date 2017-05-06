@@ -1,20 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>Hello Django!</h1>
-    {{ posts }}
-    <hr>
+{% extends 'blog/base.html' %}
+
+{% block content %}
     {% for post in posts %}
         <div>
             <p>published: {{ post.published_date }}</p>
-            <h3><a href="">{{ post.title }}</a></h3>
+            <h3><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h3>
             <p>{{ post.text | linebreaksbr }}</p>
         </div>
     {% endfor %}
-
-</body>
-</html>
+{% endblock %}
